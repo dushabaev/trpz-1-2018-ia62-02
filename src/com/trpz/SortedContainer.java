@@ -55,7 +55,6 @@ public class SortedContainer {
         // are already at the right position.
 
     }
-}
 
     private int[] numbers;
     private int number;
