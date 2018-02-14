@@ -103,4 +103,8 @@ public class SortedContainer {
         }
         return input;
     }
+
+    public static int dummy(){
+        return 42;
+    }
 }
