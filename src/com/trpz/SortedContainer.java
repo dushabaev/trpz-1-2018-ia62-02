@@ -1,47 +1,20 @@
 package com.trpz;
 
 public class SortedContainer {
-    private int[] helper;
-    private int[] mergeNumbers;
+    public static int[] SelectionSort(int[] arr){
 
-    public void MergeSort(int[] values) {
-        this.helper = new int[values.length];
-        mergesort(0, values.length - 1);
-    }
+        for (int i = 0; i < arr.length - 1; i++)
+        {
+            int index = i;
+            for (int j = i + 1; j < arr.length; j++)
+                if (arr[j] < arr[index])
+                    index = j;
 
-    private void mergesort(int low, int high) {
-        if (low < high) {
-            int middle = low + (high - low) / 2;
-            mergesort(low, middle);
-            mergesort(middle + 1, high);
-            merge(low, middle, high);
+            int smallerNumber = arr[index];
+            arr[index] = arr[i];
+            arr[i] = smallerNumber;
         }
-    }
-
-    private void merge(int low, int middle, int high) {
-        System.arraycopy(mergeNumbers, low, helper, low, high + 1 - low);
-
-        int i = low;
-        int j = middle + 1;
-        int k = low;
-        // Copy the smallest values from either the left or the right side back
-        // to the original array
-        while (i <= middle && j <= high) {
-            if (helper[i] <= helper[j]) {
-                mergeNumbers[k] = helper[i];
-                i++;
-            } else {
-                mergeNumbers[k] = helper[j];
-                j++;
-            }
-            k++;
-        }
-
-        while (i <= middle) {
-            mergeNumbers[k] = helper[i];
-            k++;
-            i++;
-        }
+        return arr;
     }
 
     private int[] numbers;
